@@ -1,0 +1,7 @@
+/* Neon Text Effect */
+.neon-text {
+    text-shadow: 0 0 10px var(--neon-blue),
+                 0 0 20px var(--neon-blue),
+                 0 0 30px var(--neon-blue);
+  }
+  
