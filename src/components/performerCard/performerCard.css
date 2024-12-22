@@ -1,0 +1,185 @@
+
+.card {
+  width: 20rem;
+  height: 26rem;
+  background: white;
+  border-radius: 32px;
+  padding: 3px;
+  position: relative;
+  box-shadow: 0px 20px 30px -15px rgba(96, 75, 74, 0.3);
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.card .profile-pic {
+  position: absolute;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  top: 3px;
+  left: 3px;
+  border-radius: 29px;
+  z-index: 1;
+  border:  0px solid rgba(0, 191, 255, 1);
+  overflow: hidden;
+  transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out;
+}
+.card .profile-pic img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.card .bottom {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  right: 3px;
+  background: rgba(0, 191, 255, 1);
+  top: 80%;
+  border-radius: 29px;
+  z-index: 2;
+  box-shadow: 0 5px 5px rgba(96, 75, 74, 0.2) inset;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+/* Content Styling */
+.card .bottom .content {
+  position: absolute;
+  bottom: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 2rem; /* Initial padding */
+  transition: padding-bottom 0.8s ease-in-out; /* Transition for padding */
+}
+
+
+  .card .bottom .content .name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fefefe; /* Deep Pink */
+    margin-bottom: 0;
+    transition: transform 0.5s ease-out, margin-bottom 0.5s ease-out;
+    transform: translateY(80px); /* Initially move the name down */
+    text-shadow: 
+    0 6px 10px rgba(138, 43, 226, 0.7), /* Violet glow */
+    0 2px 20px rgba(255, 20, 147, 0.8), /* Pink glow */
+    0 11px 7px rgba(25, 25, 112, 0.7)
+  }
+  
+
+.card .bottom .content .about-me {
+  font-size: 1.3rem; /* Slightly increased font size */
+  font-weight: 600; /* Increased font weight */
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.card:hover .bottom .content {
+  padding-bottom: 8rem; /* Increased padding */
+}
+
+.card:hover .bottom .content .name {
+  transform: translateY(-20px); /* Moves the name upwards */
+  margin-bottom: 1rem; /* Adds space below the name */
+}
+
+.card:hover .bottom .content .about-me {
+  opacity: 1; /* Make about-me visible */
+  transform: translateY(0); /* Moves about-me to its original position */
+}
+
+
+
+
+.card:hover .profile-pic img {
+  filter: brightness(1.2) saturate(1.1); /* Slightly brighter and more vibrant image */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+
+/* Hover Effects */
+.card:hover .bottom {
+  top: 20%;
+  border-radius: 80px 29px 29px 29px;
+  box-shadow: 
+    0 0 6px 3px rgba(0, 191, 255, 0.6), /* Neon Blue */
+    0 0 6px 3px rgba(138, 43, 226, 0.5), /* Purple */
+    0 0 8px 3px rgba(255, 20, 147, 0.6), /* Magenta */
+    0 0 8px 3px rgba(255, 165, 0, 0.6), /* Neon Yellow */
+    0 0 10px 3px rgba(0, 255, 255, 0.4); /* Neon Teal */
+}
+.card:hover .bottom .content .about-me {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Profile Picture Hover */
+.card:hover .profile-pic {
+  width: 10rem;
+  height: 10rem;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+  z-index: 3;
+  border: 5px solid rgba(0, 191, 255, 1);
+  box-shadow: 
+    0 0 10px 2px rgba(0, 191, 255, 0.6), 
+    0 0 10px 2px rgba(138, 43, 226, 0.5), 
+    0 0 12px 2px rgba(255, 20, 147, 0.6), 
+    0 0 12px 2px rgba(255, 165, 0, 0.6), 
+    0 0 14px 2px rgba(0, 255, 255, 0.4);
+}
+
+/* Glow Animation */
+@keyframes glowing {
+  0%, 100% { 
+    box-shadow: 
+      0 0 8px rgba(0, 191, 255, 0.6), 
+      0 0 10px rgba(138, 43, 226, 0.7), 
+      0 0 12px rgba(255, 20, 147, 0.7), 
+      0 0 12px rgba(255, 165, 0, 0.7), 
+      0 0 14px rgba(0, 255, 255, 0.5);
+  }
+  50% { 
+    box-shadow: 
+      0 0 14px rgba(0, 191, 255, 0.8), 
+      0 0 16px rgba(138, 43, 226, 0.9), 
+      0 0 18px rgba(255, 20, 147, 1), 
+      0 0 18px rgba(255, 165, 0, 1), 
+      0 0 20px rgba(0, 255, 255, 0.7);
+  }
+}
+
+
+.card:hover {
+  animation: glowing 1.5s ease-in-out infinite alternate;
+}
+
+
+/* Media Query for Phones */
+@media (max-width: 600px) {
+  .card {
+    width: 18rem;
+    height: 24rem;
+  }
+  .card:hover .bottom .content {
+    margin-bottom: -2rem;
+  }
+
+  .card .bottom .content .name {
+    font-size: 2.2rem; /* Slightly reduced for phones */
+  }
+
+  .card .bottom .content .about-me {
+    font-size: 1.1rem; /* Adjusted for readability */
+  }
+}
