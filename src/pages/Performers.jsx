@@ -20,7 +20,7 @@ const performersArray = [
     name: "DJ",
     date: "29th January",
     imageUrl: "/placeholder.svg?height=400&width=300",
-    description: "Band"
+    description: "Bands"
   }
 ];
 
