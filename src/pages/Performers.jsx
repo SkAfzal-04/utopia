@@ -26,7 +26,7 @@ const performersArray = [
 
 const Performers = () => {
   return (
-    <div className="flex flex-wrap justify-around gap-6 mt-6">
+    <div  className="flex flex-wrap justify-around gap-6 mt-6">
       {performersArray.map((performer, index) => (
         <PerformerCard
           key={index}
