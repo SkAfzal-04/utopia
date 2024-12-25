@@ -11,11 +11,13 @@ const Navbar = () => {
     <nav className="bg-gradient-to-r from-gray-900 to-black p-4 shadow-lg fixed w-full top-0 z-50">
      
       <div className="flex items-center">
+        <a href="#home">
           <img
             src= {logo}// Path to the logo image in the public folder
             alt="Logo"
             className="h-12 mr-4"  // Adjust the size of the logo as needed
           />
+        </a>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8">

@@ -4,9 +4,9 @@ import vid1 from "../assets/vid1.mp4";
 
 export function Home  ()  {
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-full h-screen mb-[-130px]">
       {/* Video Background */}
-      <div className="absolute top-0 left-0 w-full h-full">
+      <div className="absolute top-[-100px] left-0 w-full h-full">
       <video autoPlay muted loop className="w-full h-full object-cover">
           <source src={vid1} type="video/mp4" />
           Your browser does not support the video tag.
