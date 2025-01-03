@@ -1,7 +1,7 @@
 import React from 'react';
 import PerformerCard from '../components/performerCard/performerCard';
-import AnkitaImage from '../assets/images/Ankita.jpeg';
-import BullteImage from '../assets/images/bullet.jpeg';
+import AnkitaImage from '../assets/images/ankita.jpg';
+import BullteImage from '../assets/images/B-one.jpg';
 
 const performersArray = [
   {

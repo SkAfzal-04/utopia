@@ -20,7 +20,7 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8">
+        <ul className="hidden md:flex space-x-8 ml-auto">
           {["Home", "About", "Performers", "Schedule","Our Team","Sponsors","Contact"].map((item) => (
             <li key={item} className="group">
               <a
@@ -35,7 +35,7 @@ const Navbar = () => {
         </ul>
 
         {/* Mobile Menu Toggle */}
-        <button className="md:hidden text-white" onClick={toggleMenu}>
+        <button className="md:hidden text-white ml-auto" onClick={toggleMenu}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
