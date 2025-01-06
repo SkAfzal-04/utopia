@@ -10,6 +10,7 @@ import Preloader from "./components/Preloader";
 import Footer from "./components/Footer";
 // import { Sponsors } from './pages/Sponsors';
 import "./App.css";
+import Contact from "./pages/Contact";
 
 function App() {
   
@@ -47,8 +48,9 @@ function App() {
         <section id="schedule">
           <Schedule />
         </section>
-        {/* <Sponsors />
-        <Contact /> */}
+        <section id="contact">
+          <Contact />
+        </section>
       </main>
       <Footer />
     </div>

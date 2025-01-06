@@ -7,6 +7,17 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      setIsOpen(false); // Close mobile menu if open
+    }
+  };
+
   return (
     <nav className="bg-gradient-to-r from-gray-900 to-black p-4 shadow-lg fixed w-full top-0 z-50">
      
@@ -25,6 +36,10 @@ const Navbar = () => {
             <li key={item} className="group">
               <a
                 href={`#${item.toLowerCase()}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.toLowerCase());
+                }}
                 className="text-white text-lg relative group-hover:text-yellow-400 transition duration-300"
               >
                 {item}
