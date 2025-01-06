@@ -12,7 +12,7 @@ export const Schedule = () => {
     <div className="min-h-screen bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white p-4 md:p-8">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold mb-8 md:mb-10 text-center font-orbitron bg-gradient-to-r from-lime-400 via-emerald-300 to-lime-400 text-transparent bg-clip-text">
-          UTOPIA 2025
+          Schedule
         </h1>
         <DaySelector selectedDay={selectedDay} onDayChange={setSelectedDay} />
         
