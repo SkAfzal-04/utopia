@@ -1,7 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Phone, Mail, MapPin, Calendar, Ticket } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Calendar,
+  Ticket,
+  Clock,
+  User,
+  Info,
+  CalendarDays,
+  MonitorSmartphone,
+  ClipboardList,
+  GraduationCap,
+  MapPinHouse,
+} from "lucide-react";
 
 const Contact = () => {
   const controls = useAnimation();
@@ -133,7 +147,25 @@ const Contact = () => {
         animation: glow 3s ease-in-out infinite;
       }
       .heading-gradient {
-        background: linear-gradient(135deg, #ff6b6b 0%, #4f46e5 100%);
+        background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .heading-gradient-1 {
+        background: linear-gradient(135deg, #a3e635 0%, #16a34a 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+        .heading-gradient-2 {
+        background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .heading-gradient-3 {
+        background: linear-gradient(135deg, #fb7185 0%, #9333ea 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -152,19 +184,19 @@ const Contact = () => {
     <div
       id="contact-section"
       ref={ref}
-      className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 p-4 md:p-8"
+      className="min-h-screen bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 p-2 sm:p-4 md:p-8"
     >
       <motion.div
         initial="hidden"
         animate={controls}
         variants={containerVariants}
-        className="max-w-6xl mx-auto bg-white/10 backdrop-blur-lg rounded-xl p-6 md:p-8 shadow-2xl"
+        className="max-w-6xl mx-auto bg-white/10 backdrop-blur-lg rounded-xl p-6 md:p-8 shadow-[0_0_25px_rgba(139,92,246,0.3),0_0_45px_rgba(96,165,250,0.2)] overflow-hidden"
       >
         <motion.h1
           variants={itemVariants}
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-8 font-orbitron heading-gradient"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 font-orbitron heading-gradient"
           transition={{
             type: "spring",
             stiffness: 200,
@@ -196,13 +228,18 @@ const Contact = () => {
                         transition: { duration: 2, repeat: Infinity },
                       }}
                     >
-                      <MapPin className="h-6 w-6 text-pink-500" />
+                      <MapPin className="h-6 w-6 text-emerald-500" />
                     </motion.div>
-                    <h3 className="text-xl font-semibold text-pink-400">
+                    <h3 className="text-xl font-semibold text-pink-400 font-orbitron heading-gradient-1">
                       Location
                     </h3>
                   </div>
-                  <p className="text-emerald-300">{eventDetails.location}</p>
+                  <div className="flex items-center gap-2 text-emerald-300">
+                    <MapPinHouse className="h-4 w-4" />
+                    <p className="bg-gradient-to-br from-emerald-100 to-emerald-400 bg-clip-text text-transparent">
+                      {eventDetails.location}
+                    </p>
+                  </div>
                 </motion.div>
 
                 <motion.div
@@ -223,14 +260,24 @@ const Contact = () => {
                         },
                       }}
                     >
-                      <Calendar className="h-6 w-6 text-cyan-500" />
+                      <CalendarDays className="h-6 w-6 text-cyan-500" />
                     </motion.div>
-                    <h3 className="text-xl font-semibold text-cyan-400">
+                    <h3 className="text-xl font-semibold text-cyan-400 font-orbitron heading-gradient-2">
                       Date & Time
                     </h3>
                   </div>
-                  <p className="text-sky-300">{eventDetails.date}</p>
-                  <p className="text-sky-200">{eventDetails.time}</p>
+                  <div className="flex items-center gap-2 text-sky-300">
+                    <Calendar className="h-4 w-4" />
+                    <p className="bg-gradient-to-br from-sky-300 to-sky-400 bg-clip-text text-transparent">
+                      {eventDetails.date}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 text-sky-200">
+                    <Clock className="h-4 w-4" />
+                    <p className="bg-gradient-to-br from-sky-100 to-sky-400 bg-clip-text text-transparent">
+                      {eventDetails.time}
+                    </p>
+                  </div>
                 </motion.div>
 
                 <motion.div
@@ -247,33 +294,45 @@ const Contact = () => {
                         transition: { duration: 2, repeat: Infinity },
                       }}
                     >
-                      <Ticket className="h-6 w-6 text-yellow-400" />
+                      <Ticket className="h-6 w-6 text-pink-500" />
                     </motion.div>
-                    <h3 className="text-xl font-semibold text-yellow-400">
+                    <h3 className="text-xl font-semibold text-yellow-400 font-orbitron heading-gradient-3">
                       Registration
                     </h3>
                   </div>
-                  <p className="text-rose-300">
-                    Internal: {eventDetails.registrationFee.internal}
-                  </p>
-                  <p className="text-rose-200">
-                    External: {eventDetails.registrationFee.external}
-                  </p>
-                  <p className="text-rose-100 mt-2 text-sm">
-                    {eventDetails.passInfo}
-                  </p>
+                  <div className="flex items-center gap-2 text-pink-400">
+                    <User className="h-4 w-4" />
+                    <p className="bg-gradient-to-br from-pink-300 to-pink-600 bg-clip-text text-transparent">
+                      Internal: {eventDetails.registrationFee.internal}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 text-rose-200">
+                    <User className="h-4 w-4" />
+                    <p className="bg-gradient-to-br from-pink-200 to-pink-400 bg-clip-text text-transparent">
+                      External: {eventDetails.registrationFee.external}
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2 text-rose-100 mt-2 text-sm">
+                    <Info className="h-4 w-4 mt-1" />
+                    <p className="bg-gradient-to-br from-pink-100 to-pink-200 bg-clip-text text-transparent leading-relaxed">
+                      Entry only with a valid festival pass.{" "}
+                      <br className="hidden md:block" />
+                      Available at the registration desk.
+                    </p>
+                  </div>
                 </motion.div>
               </>
             )}
           </AnimatePresence>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           <motion.div variants={containerVariants}>
             <motion.h2
               variants={itemVariants}
-              className="text-2xl font-bold mb-6 heading-gradient hover:scale-105 transition-transform duration-300"
+              className="text-2xl font-bold mb-6 heading-gradient hover:scale-105 transition-transform duration-300 font-orbitron flex items-center gap-3"
             >
+              <MonitorSmartphone className="h-6 w-6 text-violet-700" />
               Technical Team
             </motion.h2>
             <div className="space-y-4">
@@ -287,25 +346,35 @@ const Contact = () => {
                   className="bg-white/20 p-6 rounded-lg transform-gpu"
                   transition={{ delay: index * 0.2 }}
                 >
-                  <h3 className="text-xl font-semibold text-violet-300">
-                    {dev.name}
-                  </h3>
-                  <p className="text-violet-200">
-                    {dev.dept}, {dev.year}
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <User className="h-5 w-5 text-violet-300" />
+                    <h3 className="text-xl font-semibold bg-gradient-to-r from-violet-400 via-pink-400 to-blue-400 bg-clip-text text-transparent break-words">
+                      {dev.name}
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-2 text-violet-200">
+                    <GraduationCap className="h-5 w-5 text-green-500" />
+                    <p className="bg-gradient-to-r from-teal-400 via-green-400 to-yellow-400 bg-clip-text text-transparent">
+                      {dev.dept}, {dev.year}
+                    </p>
+                  </div>
                   <motion.div
                     className="mt-4 space-y-2"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 + index * 0.2 }}
                   >
-                    <div className="flex items-center gap-2 text-violet-100">
-                      <Phone className="h-4 w-4" />
-                      <p>{dev.phone}</p>
+                    <div className="flex items-center gap-2 text-orange-400">
+                      <Phone className="h-4 w-4 flex-shrink-0" />
+                      <p className="text-sm sm:text-base bg-gradient-to-r from-orange-400 via-red-400 to-purple-400 bg-clip-text text-transparent break-all">
+                        {dev.phone}
+                      </p>
                     </div>
-                    <div className="flex items-center gap-2 text-violet-100">
-                      <Mail className="h-4 w-4" />
-                      <p>{dev.email}</p>
+                    <div className="flex items-center gap-2 text-cyan-500">
+                      <Mail className="h-4 w-4 flex-shrink-0" />
+                      <p className="text-sm sm:text-base bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent break-all">
+                        {dev.email}
+                      </p>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -316,8 +385,9 @@ const Contact = () => {
           <motion.div variants={containerVariants}>
             <motion.h2
               variants={itemVariants}
-              className="text-2xl font-bold mb-6 heading-gradient hover:scale-105 transition-transform duration-300"
+              className="text-2xl font-bold mb-6 heading-gradient hover:scale-105 transition-transform duration-300 font-orbitron flex items-center gap-3"
             >
+              <ClipboardList className="h-6 w-6 text-purple-600" />
               Event Coordinators
             </motion.h2>
             <div className="space-y-4">
@@ -331,25 +401,41 @@ const Contact = () => {
                   className="bg-white/20 p-6 rounded-lg transform-gpu"
                   transition={{ delay: index * 0.2 }}
                 >
-                  <h3 className="text-xl font-semibold text-amber-300">
-                    {coord.name}
-                  </h3>
-                  <p className="text-amber-200">
-                    {coord.dept}, {coord.year}
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <User className="h-5 w-5 text-teal-500" />
+                    <h3 className="text-xl font-semibold bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-transparent bg-clip-text break-words">
+                      {coord.name}
+                    </h3>
+                    {/* <h3 className="text-xl font-semibold bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                      {coord.name.split(" ")[0]}
+                    </h3>
+                    <h3 className="text-xl font-semibold bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">
+                      {coord.name.split(" ")[1]}
+                    </h3> */}
+                  </div>
+                  <div className="flex items-center gap-2 text-purple-500">
+                    <GraduationCap className="h-5 w-5" />
+                    <p className="bg-gradient-to-r from-purple-500 via-indigo-400 to-pink-400 bg-clip-text text-transparent">
+                      {coord.dept}, {coord.year}
+                    </p>
+                  </div>
                   <motion.div
                     className="mt-4 space-y-2"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 + index * 0.2 }}
                   >
-                    <div className="flex items-center gap-2 text-amber-100">
-                      <Phone className="h-4 w-4" />
-                      <p>{coord.phone}</p>
+                    <div className="flex items-center gap-2 text-teal-500">
+                      <Phone className="h-4 w-4 flex-shrink-0" />
+                      <p className="text-sm sm:text-base bg-gradient-to-r from-teal-400 via-green-400 to-blue-400 bg-clip-text text-transparent break-all">
+                        {coord.phone}
+                      </p>
                     </div>
-                    <div className="flex items-center gap-2 text-amber-100">
-                      <Mail className="h-4 w-4" />
-                      <p>{coord.email}</p>
+                    <div className="flex items-center gap-2 text-pink-500">
+                      <Mail className="h-4 w-4 flex-shrink-0" />
+                      <p className="text-sm sm:text-base bg-gradient-to-r from-pink-400 via-red-400 to-yellow-400 bg-clip-text text-transparent break-all">
+                        {coord.email}
+                      </p>
                     </div>
                   </motion.div>
                 </motion.div>
