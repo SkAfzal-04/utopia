@@ -9,7 +9,7 @@ export const TimelineEventComponent = ({ event, isLeft }) => {
         <div className="w-1/2" />
         <div className={`w-1/2 ${isLeft ? 'pr-8 text-right' : 'pl-8'}`}>
           <div className="glass-card rounded-xl p-6 transform transition-all duration-300 hover:scale-[1.02] hover:bg-white/15">
-            <div className={`flex items-center mb-3 ${isLeft ? 'justify-end space-x-reverse space-x-4' : 'space-x-4'}`}>
+            <div className={`flex items-center mb-3 ${isLeft ? 'justify-end space-x-4' : 'space-x-4'}`}>
               <Clock className="w-5 h-5 text-lime-400" />
               <span className="text-lime-400 font-medium font-orbitron">{event.time}</span>
             </div>
