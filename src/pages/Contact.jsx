@@ -6,16 +6,15 @@ import {
   Mail,
   MapPin,
   Calendar,
-  Ticket,
   Clock,
   User,
-  Info,
-  CalendarDays,
-  MonitorSmartphone,
-  ClipboardList,
-  GraduationCap,
-  MapPinHouse,
+  Users,
+  Globe,
+  Facebook,
+  Instagram,
+  Linkedin,
 } from "lucide-react";
+import TeamSection from "../components/TeamSection";
 
 const Contact = () => {
   const controls = useAnimation();
@@ -23,36 +22,57 @@ const Contact = () => {
     threshold: 0.1,
     triggerOnce: true,
   });
-  const [isVisible, setIsVisible] = useState(false);
+  const [activeTab, setActiveTab] = useState("location");
 
   useEffect(() => {
     if (inView) {
-      setIsVisible(true);
       controls.start("visible");
     }
   }, [controls, inView]);
 
   const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0 },
     visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.1,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
+
+  const tabContentVariants = {
+    enter: { opacity: 0, y: 20 },
+    center: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        staggerChildren: 0.5,
+        duration: 0.3,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      transition: {
+        duration: 0.3,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: {
         duration: 0.5,
         ease: "easeOut",
-        delay: 0.2,
       },
     },
   };
@@ -68,12 +88,11 @@ const Contact = () => {
         type: "spring",
         stiffness: 100,
         damping: 15,
-        delay: 0.3,
       },
     },
     hover: {
-      scale: 1.05,
-      y: -10,
+      scale: 1.03,
+      y: -5,
       transition: {
         type: "spring",
         stiffness: 400,
@@ -82,367 +101,336 @@ const Contact = () => {
     },
   };
 
+  const fadeInVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.5 },
+    },
+  };
+
   const eventDetails = {
-    location: "MCKVIE College, Main Campus",
     date: "January 28-29, 2025",
     time: "4:00 PM - 10:00 PM",
-    registrationFee: {
-      internal: "₹200",
-      external: "₹300",
+    registrationDeadline: "January 20, 2025",
+    venue: "MCKV Institute of Engineering",
+    expectedAttendees: "500+",
+    socialMedia: {
+      facebook: "facebook.com/utopia2025",
+      instagram: "@utopia2025",
+      linkedin: "linkedin.com/company/utopia2025",
     },
-    passInfo:
-      "Entry only with valid festival pass. Available at registration desk.",
   };
 
-  const contacts = {
-    developers: [
-      {
-        name: "Akash Banerjee",
-        dept: "CSE",
-        year: "4th Year",
-        phone: "+91 XXXXXXXXXX",
-        email: "akash.b@college.edu",
-      },
-      {
-        name: "Shibam Jha",
-        dept: "IT",
-        year: "4th Year",
-        phone: "+91 XXXXXXXXXX",
-        email: "shibam.j@college.edu",
-      },
+  const teamMembers = {
+    chairman: "Prof. (Dr.) Arun Kumar Jalan",
+    coChairman: "Mr. Subir Bhadra",
+    coreCommitteeMembers: [
+      "Mrs. Arpita Ghosh",
+      "Ms. Debanjali Chowdhury",
+      "Dr. Abhijit Pramanik",
+      "Mr. Sourav Ghorai",
+      "Mr. Milan Chakrabortty",
+      "Ms. Saptami Roy Chowdhury",
+      "Mr. Swarup Chandra Giri",
+      "Mr. Dhiman Bhattacharya",
+      "Mr. Shyam Sundar Dutta",
+      "Dr. Mahua Nandy (Pal)",
+      "Dr. Sasmita S Choudhury",
+      "Mr. Soham Goswami",
+      "Mrs. Moumita Goswami",
+      "Mr. Puspen Lahiri",
+      "Mr. Shukla Mondal",
+      "Dr. Deep Suman Deb",
+      "Mr. Sudip Bera",
+      "Mrs. Mahua Raha (Patra)",
+      "Mrs. Sushmita Dey",
+      "Mr. Soham Lodh",
+      "Mr. Sekhar Rana",
+      "Dr. Debopoma Kar Ray",
+      "Mr. Sudeep Samanta",
+      "Dr. Suchismita Ghosh",
+      "Mr. Santanu Maity",
+      "Mr. Arindam Das",
+      "Mrs. Anwesa Das",
+      "Mr. Uddalok Sen",
+      "Mr. Pintu Das",
+      "Mr. Nabankur Mandal",
+      "Dr. Arindam Ghosh",
+      "Mrs. Priyanka Dhar",
+      "Mrs. Arpita Sen",
+      "Ms. Satakshi Ghoshal",
+      "Mr. Basudev Ghatak",
+      "Mr. Rohit Rustagi",
+      "Mr. Prabir Ghosh",
+      "Mr. Pronobesh Sarkar",
     ],
-    coordinators: [
-      {
-        name: "Saptarshi Banik",
-        dept: "CSE",
-        year: "4th Year",
-        phone: "+91 XXXXXXXXXX",
-        email: "saptarshi.b@college.edu",
-      },
-      {
-        name: "Swarnadeep Chakroborty",
-        dept: "CSE",
-        year: "4th Year",
-        phone: "+91 XXXXXXXXXX",
-        email: "swarnadeep.c@college.edu",
-      },
+    advisoryCommitteeMembers: [
+      "Prof. (Dr.) Abhijit Lahiri",
+      "Prof. (Dr.) Satadal Saha",
+      "Prof. (Dr.) Sudipto Chaki",
+      "Prof. (Dr.) Prasenjit Chatterjee",
+      "Dr. Juin Ghosh Sarkar",
+      "Dr. Dipankar Ghosh",
+      "Mr. Avijit Bose",
+      "Mr. Sachin Balo",
+      "Dr. Pubali Mukherjee",
+      "Dr. Tamal Roy",
+      "Dr. Abhijit Dutta",
+      "Mr. Tapas Kumar Biswas",
+    ],
+    studentCommitteeMembers: [
+      "Swarnadeep Chakraborty",
+      "Nandini Mishra",
+      "Anwesha Laha",
+      "Khushi Kachhap",
+      "Sreejeeta Dutta",
+      "Pabitra Bhanu Dash",
+      "Shreya Mete",
+      "Saptarshi Banik",
+      "Meghana Choudhary",
+      "Anuran Chatterjee",
+      "Snehashree Chakraborty",
+      "Bikram Das",
+      "Roshan Kumar Singh",
+      "Shivam kumar Jha",
+      "Aditya Vardhan Rai",
+      "Md Arsalan Jawed Ansari",
+      "Ripan Kanrar",
+      "Rohit Prasad",
+      "Sakshi Gupta",
+      "Mukund Kumar Jha",
+      "Ratul Khan",
+      "Junaid Iqbal",
+      "Shresthangsu Chatterjee",
+      "Arunima Samaddar ",
+      "Antara Pal",
+      "Tathagata Biswas",
+      "Rahul Singh",
+      "Amisha Agarwal",
+      "Abir Mondal",
+      "Sreemoyee Chatterjee",
+      "Versha Jha",
     ],
   };
 
-  const styles = {
-    glowingText: `
-      @keyframes glow {
-        0%, 100% {
-          text-shadow: 0 0 12px #ff6b6b,
-                       0 0 20px #ff6b6b,
-                       0 0 30px #ff6b6b;
-        }
-        50% {
-          text-shadow: 0 0 14px #4f46e5,
-                       0 0 24px #4f46e5,
-                       0 0 36px #4f46e5;
-        }
-      }
-      .glow-text {
-        animation: glow 3s ease-in-out infinite;
-      }
-      .heading-gradient {
-        background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      .heading-gradient-1 {
-        background: linear-gradient(135deg, #a3e635 0%, #16a34a 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-        .heading-gradient-2 {
-        background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      .heading-gradient-3 {
-        background: linear-gradient(135deg, #fb7185 0%, #9333ea 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-    `,
-  };
+  const tabs = [
+    { id: "location", label: "Location" },
+    { id: "contact", label: "Contact" },
+    { id: "team", label: "Team" },
+  ];
 
-  useEffect(() => {
-    const styleSheet = document.createElement("style");
-    styleSheet.innerText = styles.glowingText;
-    document.head.appendChild(styleSheet);
-    return () => styleSheet.remove();
-  }, []);
+  const renderTabContent = (tab) => {
+    const content = {
+      location: (
+        <motion.div
+          variants={containerVariants}
+          className="space-y-4 sm:space-y-6"
+        >
+          <motion.div
+            variants={cardVariants}
+            whileHover="hover"
+            className="bg-white/10 p-4 sm:p-6 rounded-lg backdrop-blur-md"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <MapPin className="h-6 w-6 text-blue-400" />
+              <h3 className="text-xl font-semibold text-white">Location</h3>
+            </div>
+            <div className="aspect-video w-full rounded-lg overflow-hidden mb-4">
+              <iframe
+                title="MCKV Institute of Engineering"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.9151917805775!2d88.3451275747585!3d22.6196419312457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89d65da7b3775%3A0x30915f7e98f1b0d5!2sMCKV%20Institute%20of%20Engineering!5e0!3m2!1sen!2sin!4v1736349538093!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-lg"
+              />
+            </div>
+            <div className="space-y-2 text-gray-300 text-sm sm:text-base">
+              <p>{eventDetails.venue}</p>
+              <p>243 G. T. Road (North),</p>
+              <p>Liluah, Howrah – 711204</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={cardVariants}
+            whileHover="hover"
+            className="bg-white/10 p-6 rounded-lg backdrop-blur-md"
+          >
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-purple-400" />
+                  <div>
+                    <p className="text-white font-medium">Event Date</p>
+                    <p className="text-gray-300">{eventDetails.date}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Clock className="h-5 w-5 text-pink-400" />
+                  <div>
+                    <p className="text-white font-medium">Event Time</p>
+                    <p className="text-gray-300">{eventDetails.time}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Users className="h-5 w-5 text-blue-400" />
+                  <div>
+                    <p className="text-white font-medium">Expected Attendees</p>
+                    <p className="text-gray-300">
+                      {eventDetails.expectedAttendees}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Calendar className="h-5 w-5 text-red-400" />
+                  <div>
+                    <p className="text-white font-medium">
+                      Registration Deadline
+                    </p>
+                    <p className="text-gray-300">
+                      {eventDetails.registrationDeadline}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      ),
+      contact: (
+        <motion.div
+          variants={containerVariants}
+          className="space-y-4 sm:space-y-6"
+        >
+          <motion.div
+            variants={cardVariants}
+            whileHover="hover"
+            className="bg-white/10 p-4 sm:p-6 rounded-lg backdrop-blur-md"
+          >
+            <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text mb-6 font-orbitron">
+              Get in Touch
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Phone className="h-5 w-5 text-green-400" />
+                  <p className="text-gray-300">+91 33 2654 9315 / 17</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Mail className="h-5 w-5 text-red-400" />
+                  <p className="text-gray-300">utopia@mckvie.edu.in</p>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Globe className="h-5 w-5 text-blue-400" />
+                  <p className="text-gray-300">utopia-ten-omega.vercel.app</p>
+                </div>
+                <div className="flex gap-4">
+                  <motion.a
+                    whileHover={{ scale: 1.1 }}
+                    href={eventDetails.socialMedia.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-300"
+                  >
+                    <Facebook className="h-5 w-5" />
+                  </motion.a>
+                  <motion.a
+                    whileHover={{ scale: 1.1 }}
+                    href={`https://instagram.com/${eventDetails.socialMedia.instagram}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-pink-400 hover:text-pink-300"
+                  >
+                    <Instagram className="h-5 w-5" />
+                  </motion.a>
+                  <motion.a
+                    whileHover={{ scale: 1.1 }}
+                    href={eventDetails.socialMedia.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-300"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                  </motion.a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      ),
+      team: <TeamSection teamMembers={teamMembers} />,
+    };
+    return content[tab];
+  };
 
   return (
-    <div
-      id="contact-section"
-      ref={ref}
-      className="min-h-screen bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 p-2 sm:p-4 md:p-8"
-    >
+    <div className="min-h-screen bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 p-2 sm:p-4 md:p-8">
       <motion.div
+        ref={ref}
         initial="hidden"
         animate={controls}
         variants={containerVariants}
-        className="max-w-6xl mx-auto bg-white/10 backdrop-blur-lg rounded-xl p-6 md:p-8 shadow-[0_0_25px_rgba(139,92,246,0.3),0_0_45px_rgba(96,165,250,0.2)] overflow-hidden"
+        className="max-w-6xl mx-auto bg-black/30 backdrop-blur-xl rounded-xl p-4 sm:p-6 md:p-8 shadow-2xl border border-white/10"
       >
-        <motion.h1
-          variants={itemVariants}
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 font-orbitron heading-gradient"
-          transition={{
-            type: "spring",
-            stiffness: 200,
-            damping: 20,
-            delay: 0.3,
-          }}
-        >
-          Contact Us
-        </motion.h1>
-
         <motion.div
-          variants={containerVariants}
-          className="grid md:grid-cols-3 gap-6 mb-12"
+          variants={fadeInVariants}
+          className="text-center mb-8 md:mb-12"
         >
-          <AnimatePresence>
-            {isVisible && (
-              <>
-                <motion.div
-                  variants={cardVariants}
-                  whileHover="hover"
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white/20 p-6 rounded-lg"
-                >
-                  <div className="flex items-center gap-3 text-white mb-4">
-                    <motion.div
-                      // className="flex items-center gap-3"
-                      animate={{
-                        x: [0, 5, -5, 0],
-                        transition: { duration: 2, repeat: Infinity },
-                      }}
-                    >
-                      <MapPin className="h-6 w-6 text-emerald-500" />
-                    </motion.div>
-                    <h3 className="text-xl font-semibold text-pink-400 font-orbitron heading-gradient-1">
-                      Location
-                    </h3>
-                  </div>
-                  <div className="flex items-center gap-2 text-emerald-300">
-                    <MapPinHouse className="h-4 w-4" />
-                    <p className="bg-gradient-to-br from-emerald-100 to-emerald-400 bg-clip-text text-transparent">
-                      {eventDetails.location}
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={cardVariants}
-                  whileHover="hover"
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white/20 p-6 rounded-lg"
-                >
-                  <div className="flex items-center gap-3 text-white mb-4">
-                    <motion.div
-                      className="flex items-center gap-3"
-                      animate={{
-                        rotate: [0, 360],
-                        transition: {
-                          duration: 4,
-                          repeat: Infinity,
-                          ease: "linear",
-                        },
-                      }}
-                    >
-                      <CalendarDays className="h-6 w-6 text-cyan-500" />
-                    </motion.div>
-                    <h3 className="text-xl font-semibold text-cyan-400 font-orbitron heading-gradient-2">
-                      Date & Time
-                    </h3>
-                  </div>
-                  <div className="flex items-center gap-2 text-sky-300">
-                    <Calendar className="h-4 w-4" />
-                    <p className="bg-gradient-to-br from-sky-300 to-sky-400 bg-clip-text text-transparent">
-                      {eventDetails.date}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2 text-sky-200">
-                    <Clock className="h-4 w-4" />
-                    <p className="bg-gradient-to-br from-sky-100 to-sky-400 bg-clip-text text-transparent">
-                      {eventDetails.time}
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={cardVariants}
-                  whileHover="hover"
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white/20 p-6 rounded-lg"
-                >
-                  <div className="flex items-center gap-3 text-white mb-4">
-                    <motion.div
-                      className="flex items-center gap-3"
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        transition: { duration: 2, repeat: Infinity },
-                      }}
-                    >
-                      <Ticket className="h-6 w-6 text-pink-500" />
-                    </motion.div>
-                    <h3 className="text-xl font-semibold text-yellow-400 font-orbitron heading-gradient-3">
-                      Registration
-                    </h3>
-                  </div>
-                  <div className="flex items-center gap-2 text-pink-400">
-                    <User className="h-4 w-4" />
-                    <p className="bg-gradient-to-br from-pink-300 to-pink-600 bg-clip-text text-transparent">
-                      Internal: {eventDetails.registrationFee.internal}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2 text-rose-200">
-                    <User className="h-4 w-4" />
-                    <p className="bg-gradient-to-br from-pink-200 to-pink-400 bg-clip-text text-transparent">
-                      External: {eventDetails.registrationFee.external}
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-2 text-rose-100 mt-2 text-sm">
-                    <Info className="h-4 w-4 mt-1" />
-                    <p className="bg-gradient-to-br from-pink-100 to-pink-200 bg-clip-text text-transparent leading-relaxed">
-                      Entry only with a valid festival pass.{" "}
-                      <br className="hidden md:block" />
-                      Available at the registration desk.
-                    </p>
-                  </div>
-                </motion.div>
-              </>
-            )}
-          </AnimatePresence>
+          <motion.h1
+            variants={itemVariants}
+            className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text font-orbitron"
+          >
+            Contact Us
+          </motion.h1>
+          <motion.p
+            variants={itemVariants}
+            className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base"
+          >
+            Join us for an unforgettable experience at Utopia 2025.
+          </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          <motion.div variants={containerVariants}>
-            <motion.h2
-              variants={itemVariants}
-              className="text-2xl font-bold mb-6 heading-gradient hover:scale-105 transition-transform duration-300 font-orbitron flex items-center gap-3"
+        <motion.div
+          variants={itemVariants}
+          className="flex justify-center gap-2 sm:gap-4 mb-6 sm:mb-8"
+        >
+          {tabs.map((tab) => (
+            <motion.button
+              key={tab.id}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-4 sm:px-6 py-2 rounded-full transition-colors font-orbitron text-sm sm:text-base ${
+                activeTab === tab.id
+                  ? "bg-white/20 text-white"
+                  : "bg-transparent text-gray-400 hover:text-white"
+              }`}
             >
-              <MonitorSmartphone className="h-6 w-6 text-violet-700" />
-              Technical Team
-            </motion.h2>
-            <div className="space-y-4">
-              {contacts.developers.map((dev, index) => (
-                <motion.div
-                  key={index}
-                  variants={cardVariants}
-                  whileHover="hover"
-                  whileTap={{ scale: 0.95 }}
-                  custom={index}
-                  className="bg-white/20 p-6 rounded-lg transform-gpu"
-                  transition={{ delay: index * 0.2 }}
-                >
-                  <div className="flex items-center gap-2">
-                    <User className="h-5 w-5 text-violet-300" />
-                    <h3 className="text-xl font-semibold bg-gradient-to-r from-violet-400 via-pink-400 to-blue-400 bg-clip-text text-transparent break-words">
-                      {dev.name}
-                    </h3>
-                  </div>
-                  <div className="flex items-center gap-2 text-violet-200">
-                    <GraduationCap className="h-5 w-5 text-green-500" />
-                    <p className="bg-gradient-to-r from-teal-400 via-green-400 to-yellow-400 bg-clip-text text-transparent">
-                      {dev.dept}, {dev.year}
-                    </p>
-                  </div>
-                  <motion.div
-                    className="mt-4 space-y-2"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + index * 0.2 }}
-                  >
-                    <div className="flex items-center gap-2 text-orange-400">
-                      <Phone className="h-4 w-4 flex-shrink-0" />
-                      <p className="text-sm sm:text-base bg-gradient-to-r from-orange-400 via-red-400 to-purple-400 bg-clip-text text-transparent break-all">
-                        {dev.phone}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2 text-cyan-500">
-                      <Mail className="h-4 w-4 flex-shrink-0" />
-                      <p className="text-sm sm:text-base bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent break-all">
-                        {dev.email}
-                      </p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+              {tab.label}
+            </motion.button>
+          ))}
+        </motion.div>
 
-          <motion.div variants={containerVariants}>
-            <motion.h2
-              variants={itemVariants}
-              className="text-2xl font-bold mb-6 heading-gradient hover:scale-105 transition-transform duration-300 font-orbitron flex items-center gap-3"
-            >
-              <ClipboardList className="h-6 w-6 text-purple-600" />
-              Event Coordinators
-            </motion.h2>
-            <div className="space-y-4">
-              {contacts.coordinators.map((coord, index) => (
-                <motion.div
-                  key={index}
-                  variants={cardVariants}
-                  whileHover="hover"
-                  whileTap={{ scale: 0.95 }}
-                  custom={index}
-                  className="bg-white/20 p-6 rounded-lg transform-gpu"
-                  transition={{ delay: index * 0.2 }}
-                >
-                  <div className="flex items-center gap-2">
-                    <User className="h-5 w-5 text-teal-500" />
-                    <h3 className="text-xl font-semibold bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-transparent bg-clip-text break-words">
-                      {coord.name}
-                    </h3>
-                    {/* <h3 className="text-xl font-semibold bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                      {coord.name.split(" ")[0]}
-                    </h3>
-                    <h3 className="text-xl font-semibold bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">
-                      {coord.name.split(" ")[1]}
-                    </h3> */}
-                  </div>
-                  <div className="flex items-center gap-2 text-purple-500">
-                    <GraduationCap className="h-5 w-5" />
-                    <p className="bg-gradient-to-r from-purple-500 via-indigo-400 to-pink-400 bg-clip-text text-transparent">
-                      {coord.dept}, {coord.year}
-                    </p>
-                  </div>
-                  <motion.div
-                    className="mt-4 space-y-2"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + index * 0.2 }}
-                  >
-                    <div className="flex items-center gap-2 text-teal-500">
-                      <Phone className="h-4 w-4 flex-shrink-0" />
-                      <p className="text-sm sm:text-base bg-gradient-to-r from-teal-400 via-green-400 to-blue-400 bg-clip-text text-transparent break-all">
-                        {coord.phone}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2 text-pink-500">
-                      <Mail className="h-4 w-4 flex-shrink-0" />
-                      <p className="text-sm sm:text-base bg-gradient-to-r from-pink-400 via-red-400 to-yellow-400 bg-clip-text text-transparent break-all">
-                        {coord.email}
-                      </p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            variants={tabContentVariants}
+          >
+            {renderTabContent(activeTab)}
           </motion.div>
-        </div>
+        </AnimatePresence>
       </motion.div>
     </div>
   );
