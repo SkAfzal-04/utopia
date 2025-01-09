@@ -244,7 +244,7 @@ const TeamSection = ({ teamMembers }) => {
 
   return (
     <>
-      <motion.div variants={containerVariants} className="space-y-6">
+      <motion.div variants={containerVariants} className="space-y-6" id="team">
         <motion.h2
           variants={itemVariants}
           className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text font-orbitron"
@@ -258,7 +258,7 @@ const TeamSection = ({ teamMembers }) => {
           whileHover="hover"
           className="bg-white/20 p-6 rounded-lg"
         >
-          <h3 className="text-xl font-semibold text-white mb-4 font-orbitron">
+          <h3 className="text-xl font-semibold text-orange-400 mb-4 font-orbitron">
             Leadership
           </h3>
           <VerticalMarquee_1
@@ -279,7 +279,7 @@ const TeamSection = ({ teamMembers }) => {
           whileHover="hover"
           className="bg-white/20 p-6 rounded-lg"
         >
-          <h3 className="text-xl font-semibold text-white mb-4 font-orbitron">
+          <h3 className="text-xl font-semibold text-green-400 mb-4 font-orbitron">
             Committee Members
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
@@ -316,7 +316,7 @@ const TeamSection = ({ teamMembers }) => {
           whileHover="hover"
           className="bg-white/20 p-6 rounded-lg"
         >
-          <h3 className="text-xl font-semibold text-white mb-4 font-orbitron">
+          <h3 className="text-xl font-semibold text-cyan-400 mb-4 font-orbitron">
             Student Committee
           </h3>
           <VerticalMarquee

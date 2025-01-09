@@ -406,6 +406,7 @@ const Contact = () => {
           {tabs.map((tab) => (
             <motion.button
               key={tab.id}
+              data-tab={tab.id}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveTab(tab.id)}

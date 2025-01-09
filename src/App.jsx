@@ -40,9 +40,9 @@ function App() {
         <section id="home">
           <Home />
         </section>
-        <section id="about">
+        {/* <section id="about">
           <About scrollToNextSection={scrollToNextSection}/>
-        </section>
+        </section> */}
         <section id="performers" ref={nextSectionRef}>
           <Performers />
         </section>
