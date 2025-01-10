@@ -44,7 +44,7 @@ export function Home() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-xl md:text-2xl font-light tracking-wider text-purple-300 font-orbitron"
           >
-            28-29 JAN, 2025
+            29th-30th JAN, 2025
           </motion.p>
           
           <motion.h1 
