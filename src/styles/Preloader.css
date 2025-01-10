@@ -1,6 +1,6 @@
 /* src/components/Preloader.css */
 body, html {
-    background: url('../assets/vid1.mp4');
+    background: url('../assets/vidbg.mp4');
     margin: 0;
     padding: 0;
     overflow-x: hidden;

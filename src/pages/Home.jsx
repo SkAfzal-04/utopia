@@ -1,5 +1,5 @@
 import React from "react";
-import vid1 from "../assets/vid1.mp4";
+import vid1 from "../assets/vidbg.mp4";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";

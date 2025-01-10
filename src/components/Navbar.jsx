@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from '../logo.svg';
+import logo from "../assets/logo-main.png"
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,7 +74,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <ul className="absolute top-16 right-0 w-full bg-gray-800 text-center p-6 space-y-4 md:hidden">
+                    <ul className="absolute top-16 right-0 w-full bg-gray-800 text-center p-6 space-y-4 md:hidden">
             {navItems.map((item) => (
               <li key={item}>
                 <a

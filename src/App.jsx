@@ -11,7 +11,6 @@ import Footer from "./components/Footer";
 // import { Sponsors } from './pages/Sponsors';
 import "./App.css";
 import Contact from "./pages/Contact";
-import Registration from "./pages/Registration";
 
 function App() {
   
@@ -40,17 +39,14 @@ function App() {
         <section id="home">
           <Home />
         </section>
-        {/* <section id="about">
+        <section id="about">
           <About scrollToNextSection={scrollToNextSection}/>
-        </section> */}
+        </section>
         <section id="performers" ref={nextSectionRef}>
           <Performers />
         </section>
         <section id="schedule">
           <Schedule />
-        </section>
-        <section id="registration">
-          <Registration />
         </section>
         <section id="contact">
           <Contact />

@@ -3,6 +3,7 @@ import PerformerCard from '../components/performerCard/performerCard';
 import { motion } from "framer-motion";
 import AnkitaImage from '../assets/images/ankita.jpg';
 import BullteImage from '../assets/images/B-one.jpg';
+import DJImage from '../assets/images/djnight.jpg';
 // import { h2 } from 'framer-motion/client';
 
 const performersArray = [
@@ -19,9 +20,9 @@ const performersArray = [
     description: "Band"
   },
   {
-    name: "DJ",
+    name: "DJ Night",
     date: "29th January",
-    imageUrl: "/placeholder.svg?height=400&width=300",
+    imageUrl: DJImage,
     description: "Band"
   }
 ];
