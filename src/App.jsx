@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 // import { Sponsors } from './pages/Sponsors';
 import "./App.css";
 import Contact from "./pages/Contact";
+import Registration from "./pages/Registration";
 
 function App() {
   
@@ -47,6 +48,9 @@ function App() {
         </section>
         <section id="schedule">
           <Schedule />
+        </section>
+        <section id="registration">
+          <Registration />
         </section>
         <section id="contact">
           <Contact />
