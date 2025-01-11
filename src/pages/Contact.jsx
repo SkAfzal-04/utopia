@@ -110,7 +110,7 @@ const Contact = () => {
   };
 
   const eventDetails = {
-    date: "January 28-29, 2025",
+    date: "January 29-30, 2025",
     time: "4:00 PM - 10:00 PM",
     registrationDeadline: "January 20, 2025",
     venue: "MCKV Institute of Engineering",
