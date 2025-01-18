@@ -12,6 +12,8 @@ import Footer from "./components/Footer";
 import "./App.css";
 import Contact from "./pages/Contact";
 import Registration from "./pages/Registration";
+import OnStageEvents from "./components/OnStageEvents";
+import OffStageEvents from "./components/OffStageEvents";
 
 function App() {
   
@@ -51,6 +53,12 @@ function App() {
         </section>
         <section id="registration">
           <Registration />
+        </section>
+        <section className=" bg-gray-900 flex items-center justify-center p-4">
+          <OnStageEvents />
+        </section>
+        <section className=" bg-gray-900 flex items-center justify-center p-4">
+          <OffStageEvents />
         </section>
         <section id="contact">
           <Contact />
