@@ -212,6 +212,13 @@ const Contact = () => {
       "Sreemoyee Chatterjee",
       "Versha Jha",
     ],
+    developers: [
+      "Akash Banarjee",
+      "Shiban Jha",
+      "Arup Maity",
+      "Sk Mahammad Afzal",
+    ],
+
   };
 
   const tabs = [

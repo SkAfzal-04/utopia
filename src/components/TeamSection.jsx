@@ -273,6 +273,24 @@ const TeamSection = ({ teamMembers }) => {
           />
         </motion.div>
 
+        {/* Developers */}
+        <motion.div
+          variants={cardVariants}
+          whileHover="hover"
+          className="bg-white/20 p-6 rounded-lg"
+        >
+          <h3 className="text-xl font-semibold text-fuchsia-500 mb-4 font-orbitron">
+            Developers
+          </h3>
+          <VerticalMarquee_1
+            items={teamMembers.developers}
+            icon={User}
+            iconColor="text-cyan-500"
+            speed={3}
+            onNameClick={handleNameClick}
+          />
+        </motion.div>
+
         {/* Committee Members */}
         <motion.div
           variants={cardVariants}
