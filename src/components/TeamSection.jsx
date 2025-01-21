@@ -282,7 +282,7 @@ const TeamSection = ({ teamMembers }) => {
           <h3 className="text-xl font-semibold text-fuchsia-500 mb-4 font-orbitron">
             Developers
           </h3>
-          <VerticalMarquee_1
+          <VerticalMarquee
             items={teamMembers.developers}
             icon={User}
             iconColor="text-cyan-500"
