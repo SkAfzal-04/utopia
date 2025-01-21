@@ -14,15 +14,15 @@ const performersArray = [
     description: "Singer"
   },
   {
-    name: "BULLET",
-    date: "30th January",
-    imageUrl: BullteImage,
-    description: "Band"
-  },
-  {
     name: "DJ Night",
     date: "29th January",
     imageUrl: DJImage,
+    description: "Band"
+  },
+  {
+    name: "BULLET",
+    date: "30th January",
+    imageUrl: BullteImage,
     description: "Band"
   }
 ];
