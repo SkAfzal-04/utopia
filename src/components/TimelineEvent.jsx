@@ -33,7 +33,7 @@ export const TimelineEventComponent = ({ event, isLeft }) => {
             <Clock className="w-5 h-5 text-lime-400 flex-shrink-0" />
             <span className="text-lime-400 font-medium font-orbitron text-sm">{event.time}</span>
           </div>
-          <h2 className="text-xl font-bold mb-3 font-orbitron bg-gradient-to-r from-white via-lime-100 to-white text-transparent bg-clip-text">
+          <h2 className="text-base font-bold mb-3 font-orbitron bg-gradient-to-r from-white via-lime-100 to-white text-transparent bg-clip-text">
             {event.title}
           </h2>
           {event.location && (
