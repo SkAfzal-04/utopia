@@ -67,6 +67,7 @@ const Registration = () => {
       icon: Users,
       color: "from-pink-500 to-rose-500",
       shadowColor: "rgba(244,63,94,0.3)",
+      formLink: "https://forms.gle/AGe2J52ryqchYSTh9",
     },
     {
       id: "singing",
@@ -74,6 +75,23 @@ const Registration = () => {
       icon: Music,
       color: "from-violet-500 to-purple-500",
       shadowColor: "rgba(139,92,246,0.3)",
+      formLink: "https://forms.gle/2BK27Xuge8iULewn9",
+    },
+    {
+      id: "The Face Painting Competition",
+      title: "The Face Painting Competition",
+      icon: Users,
+      color: "from-pink-500 to-rose-500",
+      shadowColor: "rgba(244,63,94,0.3)",
+      formLink: "https://forms.gle/AGe2J52ryqchYSTh9",
+    },
+    {
+      id: "TEST",
+      title: "Singing Competition",
+      icon: Music,
+      color: "from-violet-500 to-purple-500",
+      shadowColor: "rgba(139,92,246,0.3)",
+      formLink: "https://forms.gle/2BK27Xuge8iULewn9",
     },
   ];
 
@@ -103,7 +121,9 @@ const Registration = () => {
           whileTap={{ scale: 0.95 }}
         >
           <a
-            href="#"
+            href={competition.formLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="block text-center bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             Register Now

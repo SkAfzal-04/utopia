@@ -10,11 +10,11 @@ import {
   User,
   Users,
   Globe,
-  Facebook,
   Instagram,
-  Linkedin,
+  MailIcon,
 } from "lucide-react";
 import TeamSection from "../components/TeamSection";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
   const controls = useAnimation();
@@ -222,9 +222,9 @@ const Contact = () => {
   };
 
   const tabs = [
-    { id: "location", label: "Location" },
-    { id: "contact", label: "Contact" },
     { id: "team", label: "Team" },
+    { id: "location", label: "Location" },
+    { id: "contact_sm", label: "Contact" },
   ];
 
   const renderTabContent = (tab) => {
@@ -311,7 +311,7 @@ const Contact = () => {
           </motion.div>
         </motion.div>
       ),
-      contact: (
+      contact_sm: (
         <motion.div
           variants={containerVariants}
           className="space-y-4 sm:space-y-6"
@@ -343,16 +343,16 @@ const Contact = () => {
                 <div className="flex gap-4">
                   <motion.a
                     whileHover={{ scale: 1.1 }}
-                    href={eventDetails.socialMedia.facebook}
+                    href={'https://whatsapp.com/channel/0029Vb1611T8fewpIkWGQs0Z'}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-300"
+                    className="text-green-400 hover:text-green-300"
                   >
-                    <Facebook className="h-5 w-5" />
+                    <FaWhatsapp className="h-5 w-5" />
                   </motion.a>
                   <motion.a
                     whileHover={{ scale: 1.1 }}
-                    href={`https://instagram.com/${eventDetails.socialMedia.instagram}`}
+                    href={'https://www.instagram.com/utopia_.2k25/profilecard/?igsh=bW1hNWdjY2xzODdu'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-pink-400 hover:text-pink-300"
@@ -361,12 +361,12 @@ const Contact = () => {
                   </motion.a>
                   <motion.a
                     whileHover={{ scale: 1.1 }}
-                    href={eventDetails.socialMedia.linkedin}
+                    href={'mailto:utopia@mckvie.edu.in'}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-300"
+                    className="text-red-400 hover:text-red-300"
                   >
-                    <Linkedin className="h-5 w-5" />
+                    <MailIcon className="h-5 w-5" />
                   </motion.a>
                 </div>
               </div>
