@@ -12,18 +12,17 @@ import Footer from "./components/Footer";
 import "./App.css";
 import Contact from "./pages/Contact";
 import Registration from "./pages/Registration";
-import OnStageEvents from "./components/OnStageEvents";
-import OffStageEvents from "./components/OffStageEvents";
+import EventCard from "./components/EventCards";
 
 function App() {
   
 
   const nextSectionRef = useRef(null); // Create a reference to the next section
 
-  const scrollToNextSection = () => {
-    // Scroll to the next section when the button is clicked
-    nextSectionRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToNextSection = () => {
+  //   // Scroll to the next section when the button is clicked
+  //   nextSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+  // };
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -54,12 +53,7 @@ function App() {
         <section id="registration">
           <Registration />
         </section>
-        <section className=" bg-gray-900 flex items-center justify-center p-4">
-          <OnStageEvents />
-        </section>
-        <section className=" bg-gray-900 flex items-center justify-center p-4">
-          <OffStageEvents />
-        </section>
+        <EventCard />
         <section id="contact">
           <Contact />
         </section>
