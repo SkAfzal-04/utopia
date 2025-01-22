@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "../assets/logo-main.png"
-
+import logo from "../assets/logo-main.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,43 +8,61 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const scrollToSection = (sectionId) => {
-    if (sectionId === 'team') {
-      const contactSection = document.getElementById('contact');
+    if (sectionId === "team") {
+      const contactSection = document.getElementById("contact");
       if (contactSection) {
-        contactSection.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
+        contactSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
         });
-        
+
         // Set active tab to "team" in Contact component
         const teamTab = document.querySelector('[data-tab="team"]');
         if (teamTab) {
           teamTab.click();
         }
       }
+    } else if (sectionId === "contact_sm") {
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        // Set active tab to "small Contact" in Contact component
+        const contactTab = document.querySelector('[data-tab="contact_sm"]');
+        if (contactTab) {
+          contactTab.click();
+        }
+      }
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
         });
       }
     }
     setIsOpen(false);
   };
 
-  const navItems = ["Home", "Performers", "Schedule", "Our Team", "Registration" ,"Sponsors", "Contact"];
+  const navItems = [
+    "Home",
+    "Performers",
+    "Schedule",
+    "Our Team",
+    "Registration",
+    "Sponsors",
+    "Contact",
+  ];
 
   return (
     <nav className="bg-gradient-to-r from-gray-900 to-black p-4 shadow-lg fixed w-full top-0 z-50">
       <div className="flex items-center">
         <a href="#home">
-          <img
-            src={logo}
-            alt="Logo"
-            className="h-12 mr-4"
-          />
+          <img src={logo} alt="Logo" className="h-12 mr-4" />
         </a>
 
         {/* Desktop Menu */}
@@ -53,10 +70,16 @@ const Navbar = () => {
           {navItems.map((item) => (
             <li key={item} className="group">
               <a
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
+                href={`#${item.toLowerCase().replace(" ", "-")}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection(item.toLowerCase() === 'our team' ? 'team' : item.toLowerCase());
+                  scrollToSection(
+                    item.toLowerCase() === "our team"
+                      ? "team"
+                      : item.toLowerCase() === "contact"
+                      ? "contact_sm"
+                      : item.toLowerCase()
+                  );
                 }}
                 className="text-white text-lg relative group-hover:text-yellow-400 transition duration-300"
               >
@@ -74,15 +97,21 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-                    <ul className="absolute top-16 right-0 w-full bg-gray-800 text-center p-6 space-y-4 md:hidden">
+          <ul className="absolute top-16 right-0 w-full bg-gray-800 text-center p-6 space-y-4 md:hidden">
             {navItems.map((item) => (
               <li key={item}>
                 <a
-                  href={`#${item.toLowerCase().replace(' ', '-')}`}
+                  href={`#${item.toLowerCase().replace(" ", "-")}`}
                   className="text-white text-xl block hover:text-yellow-400 transition duration-300"
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(item.toLowerCase() === 'our team' ? 'team' : item.toLowerCase());
+                    scrollToSection(
+                      item.toLowerCase() === "our team"
+                        ? "team"
+                        : item.toLowerCase() === "contact"
+                        ? "contact_sm"
+                        : item.toLowerCase()
+                    );
                   }}
                 >
                   {item}
