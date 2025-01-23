@@ -8,23 +8,23 @@ import DJImage from '../assets/images/djnight.jpg';
 
 const performersArray = [
   {
-    name: "Ankita",
+    name: "BULLET",
     date: "29th January",
+    imageUrl: BullteImage,
+    description: "Band"
+  },
+  {
+    name: "Ankita",
+    date: "30th January",
     imageUrl: AnkitaImage,
     description: "Singer"
   },
   {
     name: "DJ Night",
-    date: "29th January",
+    date: "30th January",
     imageUrl: DJImage,
     description: "Band"
   },
-  {
-    name: "BULLET",
-    date: "30th January",
-    imageUrl: BullteImage,
-    description: "Band"
-  }
 ];
 
 const Performers = () => {
