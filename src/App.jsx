@@ -8,11 +8,11 @@ import Performers from "./pages/Performers"; // Default import for performers se
 import { Schedule } from "./pages/Schedule";
 import Preloader from "./components/Preloader";
 import Footer from "./components/Footer";
-// import { Sponsors } from './pages/Sponsors';
 import "./App.css";
 import Contact from "./pages/Contact";
 import Registration from "./pages/Registration";
 import EventCard from "./components/EventCards";
+import Sponsors from "./components/Sponsors";
 
 function App() {
   
@@ -57,6 +57,7 @@ function App() {
         <section id="contact">
           <Contact />
         </section>
+        {/* <Sponsors /> */}
       </main>
       <Footer />
     </div>

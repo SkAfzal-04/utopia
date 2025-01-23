@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Banner from "./Banner"; // Make sure the path is correct
 import battleOfBeats from "../assets/images/battleOfBeats.jpg";
 import soloSinging from "../assets/images/soloSinging.jpg";
@@ -114,6 +115,40 @@ const EventCards = () => {
         }
     ];
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.3
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { y: 50, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.5,
+                ease: "easeOut"
+            }
+        }
+    };
+
+    const titleVariants = {
+        hidden: { y: -50, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut"
+            }
+        }
+    };
+
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
         setSelectedEvent(null); // Reset selected event when category is clicked
@@ -124,37 +159,48 @@ const EventCards = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 font-orbitron">
-            <h1 className="text-6xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-cyan-400 to-purple-500 animate-pulse hover:text-yellow-500 transition-all">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 font-orbitron">
+            <motion.h1 
+                className="text-6xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-cyan-400 to-purple-500 animate-pulse hover:text-yellow-500 transition-all"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.8 }}
+                variants={titleVariants}
+            >
                 Events
-            </h1>
-            <div className="grid gap-8 sm:grid-cols-2 grid-cols-1 mx-4">
-                {/* Onstage Events Card */}
-                <div className="relative bg-gradient-to-b from-blue-800 to-blue-600 text-white p-8 sm:p-6 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all w-72 border-2 border-cyan-500 hover:border-cyan-400 hover:shadow-xl">
-                    <h2 className="text-2xl font-bold text-center hover:text-yellow-500 transition-all">Onstage Events</h2>
+            </motion.h1>
+
+            <motion.div 
+                className="grid gap-8 sm:grid-cols-2 grid-cols-1 mx-4"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={containerVariants}
+            >
+                <motion.div variants={itemVariants} className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white p-8 sm:p-6 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all w-72 border-2 border-purple-500 hover:border-purple-400 hover:shadow-2xl hover:from-indigo-800 hover:via-purple-800 hover:to-blue-800">
+                    <h2 className="text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 hover:from-cyan-400 hover:to-purple-400 transition-all duration-500">Onstage Events</h2>
                     <div className="flex justify-center mt-6">
                         <button
                             onClick={() => handleCategoryClick('onstage')}
-                            className="px-4 py-2 bg-cyan-500 text-white font-semibold rounded hover:bg-cyan-400 transition-all hover:text-yellow-300"
+                            className="px-4 py-2 bg-gradient-to-r from-purple-600 to-cyan-600 text-white font-semibold rounded-lg hover:from-purple-500 hover:to-cyan-500 transition-all duration-300 hover:shadow-lg hover:scale-105"
                         >
                             Explore
                         </button>
                     </div>
-                </div>
+                </motion.div>
 
-                {/* Offstage Events Card */}
-                <div className="relative bg-gradient-to-b from-blue-800 to-blue-600 text-white p-8 sm:p-6 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all w-72 border-2 border-cyan-500 hover:border-cyan-400 hover:shadow-xl">
-                    <h2 className="text-2xl font-bold text-center hover:text-yellow-500 transition-all">Offstage Events</h2>
+                <motion.div variants={itemVariants} className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white p-8 sm:p-6 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all w-72 border-2 border-purple-500 hover:border-purple-400 hover:shadow-2xl hover:from-indigo-800 hover:via-purple-800 hover:to-blue-800">
+                    <h2 className="text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 hover:from-cyan-400 hover:to-purple-400 transition-all duration-500">Offstage Events</h2>
                     <div className="flex justify-center mt-6">
                         <button
                             onClick={() => handleCategoryClick('offstage')}
-                            className="px-4 py-2 bg-cyan-500 text-white font-semibold rounded hover:bg-cyan-400 transition-all hover:text-yellow-300"
+                            className="px-4 py-2 bg-gradient-to-r from-purple-600 to-cyan-600 text-white font-semibold rounded-lg hover:from-purple-500 hover:to-cyan-500 transition-all duration-300 hover:shadow-lg hover:scale-105"
                         >
                             Explore
                         </button>
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
 
             {/* Show Popup with Event List based on Category */}
             {selectedCategory && !selectedEvent && (
