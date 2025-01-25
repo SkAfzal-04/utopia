@@ -22,7 +22,7 @@ const Contact = () => {
     threshold: 0.1,
     triggerOnce: true,
   });
-  const [activeTab, setActiveTab] = useState("location");
+  const [activeTab, setActiveTab] = useState("team");
 
   useEffect(() => {
     if (inView) {
