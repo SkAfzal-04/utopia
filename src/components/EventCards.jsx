@@ -128,10 +128,12 @@ const EventCards = () => {
             <h1 className="text-6xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-cyan-400 to-purple-500 animate-pulse hover:text-yellow-500 transition-all">
                 Events
             </h1>
-            <div className="grid gap-8 sm:grid-cols-2 grid-cols-1 mx-4">
+            <div className="grid gap-8 sm:grid-cols-2 grid-cols-1">
                 {/* Onstage Events Card */}
-                <div className="relative bg-gradient-to-b from-blue-800 to-blue-600 text-white p-8 sm:p-6 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all w-72 border-2 border-cyan-500 hover:border-cyan-400 hover:shadow-xl">
-                    <h2 className="text-2xl font-bold text-center hover:text-yellow-500 transition-all">Onstage Events</h2>
+                <div className="relative bg-gradient-to-b from-blue-800 to-blue-600 text-white p-8 sm:p-6 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all w-72 border-4 border-transparent hover:border-cyan-500 animate-glow">
+                    <h2 className="text-2xl font-bold text-center hover:text-yellow-500 transition-all">
+                        Onstage Events
+                    </h2>
                     <div className="flex justify-center mt-6">
                         <button
                             onClick={() => handleCategoryClick('onstage')}
@@ -143,8 +145,10 @@ const EventCards = () => {
                 </div>
 
                 {/* Offstage Events Card */}
-                <div className="relative bg-gradient-to-b from-blue-800 to-blue-600 text-white p-8 sm:p-6 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all w-72 border-2 border-cyan-500 hover:border-cyan-400 hover:shadow-xl">
-                    <h2 className="text-2xl font-bold text-center hover:text-yellow-500 transition-all">Offstage Events</h2>
+                <div className="relative bg-gradient-to-b from-blue-800 to-blue-600 text-white p-8 sm:p-6 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all w-72 border-4 border-transparent hover:border-cyan-500 animate-glow">
+                    <h2 className="text-2xl font-bold text-center hover:text-yellow-500 transition-all">
+                        Offstage Events
+                    </h2>
                     <div className="flex justify-center mt-6">
                         <button
                             onClick={() => handleCategoryClick('offstage')}

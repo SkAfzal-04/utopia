@@ -53,7 +53,9 @@ function App() {
         <section id="registration">
           <Registration />
         </section>
-        <EventCard />
+        <section className="mx-10">
+          <EventCard/>
+        </section>
         <section id="contact">
           <Contact />
         </section>
