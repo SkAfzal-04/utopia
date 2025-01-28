@@ -7,18 +7,19 @@ import DJImage from '../assets/images/djnight.jpg';
 // import { h2 } from 'framer-motion/client';
 
 const performersArray = [
-  {
-    name: "BULLET",
-    date: "29th January",
-    imageUrl: BullteImage,
-    description: "Band"
-  },
-  {
+{
     name: "Ankita",
-    date: "30th January",
+    date: "29th January",
     imageUrl: AnkitaImage,
     description: "Singer"
   },
+  {
+    name: "BULLET",
+    date: "30th January",
+    imageUrl: BullteImage,
+    description: "Band"
+  },
+  
   {
     name: "DJ Night",
     date: "30th January",
