@@ -13,17 +13,16 @@ const performersArray = [
     imageUrl: AnkitaImage,
     description: "Singer"
   },
+{
+    name: "DJ Night",
+    date: "30th January",
+    imageUrl: DJImage,
+    description: "Band"
+  },
   {
     name: "BULLET",
     date: "30th January",
     imageUrl: BullteImage,
-    description: "Band"
-  },
-  
-  {
-    name: "DJ Night",
-    date: "30th January",
-    imageUrl: DJImage,
     description: "Band"
   },
 ];
